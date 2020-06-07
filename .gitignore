@@ -1,0 +1,5 @@
+setup.py
+dist/*
+__pycache__/*
+malekbasiccalculator.egg-info
+venv/
