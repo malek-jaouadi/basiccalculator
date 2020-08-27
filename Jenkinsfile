@@ -27,21 +27,21 @@ pipeline {
               sh 'python calculator.py &'
               }   
               }
-         stage ('setup newman') {
-           steps {
-            sh '''
-               curl -sL https://deb.nodesource.com/setup_14.x | bash -
-               apt install npm
-               npm install -g newman
-               apt-get install -y nodejs
-               '''
-           }
-         }
+         stage ('setup newman & system tests') {
+           stages{
+             agent 
+                 {
+                  docker 
+                        { 
+                          image 'postman/newman_alpine33'
+                          args '-u root:sudo'
+                 }}
           stage('system test') {
             steps {
               sh 'newman run tests/system/calculator.postman_collection.json'
               }   
               }
+         }
         }}
    
   }
