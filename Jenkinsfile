@@ -30,9 +30,9 @@ pipeline {
          stage ('setup newman') {
            steps {
             sh '''
+               curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
                apt install npm
                npm install -g newman
-               curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
                apt-get install -y nodejs
                '''
            }
