@@ -14,7 +14,6 @@ Jinja2==2.11.2
 keyring==21.2.1
 MarkupSafe==1.1.1
 packaging==20.4
-pkg-resources==0.0.0
 pkginfo==1.5.0.1
 pycparser==2.20
 Pygments==2.6.1
