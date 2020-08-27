@@ -1,2 +1,2 @@
 global-include *.py *.txt
-recursive-exclude venv
+recursive-exclude venv node_modules

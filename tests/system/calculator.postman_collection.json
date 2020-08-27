@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "692a7b1a-adb6-4ee6-b09f-f713e630cda6",
+		"name": "calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:5000/divise/10/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/divise/10/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"divise",
+						"10",
+						"2"
+					]
+				},
+				"description": "Calculator Divise function"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/power/2/5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/power/2/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"power",
+						"2",
+						"5"
+					]
+				},
+				"description": "Calculator power function"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
