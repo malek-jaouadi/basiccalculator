@@ -7,7 +7,7 @@ pipeline {
        docker 
          { 
            image 'python:3.6.9'
-           args '-p 5000:5000 -u root:sudo'
+           args '-u root:sudo'
          } }
        stages{
          stage('install requirements')
@@ -24,7 +24,7 @@ pipeline {
               }
           stage('launch application') {
             steps {
-              sh 'python calculator.py'
+              sh 'python calculator.py &'
               }   
               }
           stage('system test') {
