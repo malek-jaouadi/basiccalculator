@@ -7,7 +7,7 @@ pipeline {
        docker 
          { 
            image 'python:3.6.9'
-           args '-p 5000:5000 -u 498:497 -v /etc/passwd:/etc/passwd:ro'
+           args '-p 5000:5000 -u root:sudo'
          } }
        stages{
          stage('install requirements')
