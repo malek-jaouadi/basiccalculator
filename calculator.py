@@ -29,6 +29,13 @@ def divise(a, b):
         return jsonify({'result (a/b)': a / b })
     except Exception as err:
         return jsonify({'message': str(err)}), 400
-
+    
+@app.route('/power/<int:a>/<int:b>', methods=["GET"])
+def power(a, b):
+    try:
+        return jsonify({'result (a**b)': pow(a,b) })
+    except Exception as err:
+        return jsonify({'message': str(err)}), 400
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
