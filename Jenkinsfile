@@ -1,11 +1,12 @@
 pipeline {
-  agent { 
+  agent any
+  stages {
+    stage('Tests') {
+      agent { 
         docker { 
            image 'python:3.6.9'
            args '-u root:sudo'
          } }
-  stages {
-    stage('Tests') {
        stages{
          stage('install requirements') {
            steps {
@@ -17,17 +18,17 @@ pipeline {
             steps {
               sh 'python -m unittest'
               }}
-          stage('launch application') {
-            steps {
-              sh 'python calculator.py &'
-              }}
        }}
          stage ('setup newman & system tests') {
              agent {
                   docker { 
                           image 'postman/newman_alpine33'
                          }}
+           stage('launch application') {
             steps {
-              sh 'Heelllooooooooooooo'
+              sh 'python calculator.py &'
+              }}
+            steps {
+              sh 'newman run tests/system/calculator.postman_collection.json'
               }   
         }}}
