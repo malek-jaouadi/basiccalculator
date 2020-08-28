@@ -28,6 +28,6 @@ pipeline {
                           image 'postman/newman_alpine33'
                          }}
             steps {
-              sh 'newman run tests/system/calculator.postman_collection.json'
+              sh 'Heelllooooooooooooo'
               }   
         }}}
