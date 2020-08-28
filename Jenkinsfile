@@ -1,12 +1,11 @@
 pipeline {
-  agent any
-  stages {
-    stage('Tests') {
-      agent { 
+  agent { 
         docker { 
            image 'python:3.6.9'
            args '-u root:sudo'
          } }
+  stages {
+    stage('Tests') {
        stages{
          stage('install requirements') {
            steps {
@@ -28,7 +27,7 @@ pipeline {
              agent {
                   docker { 
                           image 'postman/newman_alpine33'
-                          args '-u root:sudo'
+                          args '-u root'
                          }}
           stages{
           stage('system test') {
