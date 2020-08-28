@@ -10,7 +10,7 @@ pipeline {
            stage('launch application') {
             steps {
               sh '''
-                  yum install python3
+                  apt-get install python3
                   python calculator.py &            
                   '''
               }}
