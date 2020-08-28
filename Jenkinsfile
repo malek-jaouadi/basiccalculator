@@ -24,11 +24,14 @@ pipeline {
                   docker { 
                           image 'postman/newman_alpine33'
                          }}
+          stages{
            stage('launch application') {
             steps {
               sh 'python calculator.py &'
               }}
+            stage('launch application') {
             steps {
               sh 'newman run tests/system/calculator.postman_collection.json'
-              }   
+              }}
+              } 
         }}}
