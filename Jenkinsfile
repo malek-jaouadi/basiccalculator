@@ -23,16 +23,11 @@ pipeline {
               }}
        }}
          stage ('setup newman & system tests') {
-           
              agent {
                   docker { 
                           image 'postman/newman_alpine33'
                          }}
-          stages{
-          stage('system test') {
             steps {
               sh 'newman run tests/system/calculator.postman_collection.json'
               }   
-              }
-         }
         }}}
