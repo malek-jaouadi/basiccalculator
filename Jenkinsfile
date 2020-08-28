@@ -29,7 +29,7 @@ pipeline {
             steps {
               sh 'python calculator.py &'
               }}
-            stage('launch application') {
+            stage('Newman Tests') {
             steps {
               sh 'newman run tests/system/calculator.postman_collection.json'
               }}
