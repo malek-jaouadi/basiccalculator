@@ -1,4 +1,5 @@
 from flask import Flask, request, abort, jsonify
+from math import *
 
 app = Flask(__name__)
 
@@ -36,6 +37,13 @@ def power(a, b):
         return jsonify({'result (a**b)': pow(a,b) })
     except Exception as err:
         return jsonify({'message': str(err)}), 400
-    
+
+@app.route('/squareroot/<int:a>', methods=["GET"])
+def squareroot(a):
+    try:
+        return jsonify({'result (√a)': sqrt(a) })
+    except Exception as err:
+        return jsonify({'message': str(err)}), 400
+       
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
