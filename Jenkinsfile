@@ -16,11 +16,11 @@ pipeline {
              }}
           stage('Unit test') {
             steps {
-              sh 'python -m unittest'
+              sh 'pytest --junitxml tests/reports_unittest/results.xml tests/unit/'
               }}
           stage('launch application') {
             steps {
-              sh 'python calculator.py &'
+              sh 'python calculaator.py &'
               }}
           stage('Newman Tests') {
             steps {
