@@ -18,7 +18,10 @@ pipeline {
             steps {
               sh 'pytest --junitxml reports/results.xml tests/unit/'
               }
-              
+              post {
+                    always {
+                        junit 'reports/*.xml'
+                        }}
               }
             
           stage('launch application') {
@@ -31,8 +34,4 @@ pipeline {
               }}
        }}
          }
-            post {
-                    always {
-                        junit 'reports/*.xml'
-                        }}
          }
