@@ -1,13 +1,15 @@
 from unittest import TestCase
 import json
-import calculator
+import sys
+sys.path.append('/home/malek/Python_Testing/calculator')
+from calculaator import app
 
 class CalcTest(TestCase):
     
     def setUp(self):
         self.a = 5
         self.b = 2
-        self.app = calculator.app.test_client()
+        self.app = app.test_client()
 
     def test_add(self):
         res = self.app.get(f'/add/{self.a}/{self.b}')

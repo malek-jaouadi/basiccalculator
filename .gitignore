@@ -1,6 +1,7 @@
 setup.py
 dist/*
-__pycache__/*
+*.pyc
+__pycache__/
 malekbasiccalculator.egg-info
 venv/
 node_modules/*
