@@ -17,7 +17,10 @@ pipeline {
           stage('Unit test') {
             steps {
               sh 'pytest --junitxml tests/reports_unittest/results.xml tests/unit/'
-              }}
+              }
+              
+              }
+            
           stage('launch application') {
             steps {
               sh 'python calculaator.py &'
@@ -27,4 +30,9 @@ pipeline {
               sh 'newman run tests/system/calculator.postman_collection.json'
               }}
        }}
-         }}
+         }
+            post {
+                    always {
+                        junit 'tests/reports_unittest/*.xml'
+                        }}
+         }
