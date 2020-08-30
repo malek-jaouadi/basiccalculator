@@ -16,7 +16,7 @@ pipeline {
              }}
           stage('Unit test') {
             steps {
-              sh 'pytest --junitxml tests/reports_unittest/results.xml tests/unit/'
+              sh 'pytest --junitxml tests/reports/results.xml tests/unit/'
               }
               
               }
@@ -33,6 +33,6 @@ pipeline {
          }
             post {
                     always {
-                        junit 'tests/reports_unittest/*.xml'
+                        junit 'tests/reports/*.xml'
                         }}
          }
