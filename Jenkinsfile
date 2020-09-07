@@ -23,7 +23,20 @@ pipeline {
                         junit 'reports/*.xml'
                         }}
               }
-            
+          stage('Code Quality Check via SonarQube') {
+            steps {
+              script {
+                def scannerHome = tool 'sonnar_scanner';
+                withSonarQubeEnv("SonarQube") {
+                  sh "${tool("sonnar_scanner")}/bin/sonar-scanner \
+                     -Dsonar.projectKey=calculator \
+                     -Dsonar.sources=. \
+                     -Dsonar.host.url=http://ec2-35-180-86-71.eu-west-3.compute.amazonaws.com:9000 \
+                     -Dsonar.login=a3e9d82e058a22f358338a3faa14eb263963756c"
+          }
+       }
+    }
+}  
           stage('launch application') {
             steps {
               sh 'python calculaator.py &'
