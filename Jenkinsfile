@@ -23,7 +23,16 @@ pipeline {
                         junit 'reports/*.xml'
                         }}
               }
-          stage('Code Quality Check via SonarQube') {
+          stage('launch application') {
+            steps {
+              sh 'python calculaator.py &'
+              }}
+          stage('Newman Tests') {
+            steps {
+              sh 'newman run tests/system/calculator.postman_collection.json'
+              }}
+       }}
+       stage('Code Quality Check via SonarQube') {
             steps {
               script {
                 def scannerHome = tool 'sonnar_scanner';
@@ -37,14 +46,5 @@ pipeline {
        }
     }
 }  
-          stage('launch application') {
-            steps {
-              sh 'python calculaator.py &'
-              }}
-          stage('Newman Tests') {
-            steps {
-              sh 'newman run tests/system/calculator.postman_collection.json'
-              }}
-       }}
          }
          }
