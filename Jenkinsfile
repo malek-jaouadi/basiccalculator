@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  options {
+    timeout(time: 4, unit: 'MINUTES')
+  }
   stages {
     stage('Tests') {
       agent { 
@@ -33,6 +36,9 @@ pipeline {
               }}
        }}
        stage('Code Quality Check via SonarQube') {
+         environment {
+           TOKEN_SONAR = credentials('token_sonar_calculator')
+         }
             steps {
               script {
                 def scannerHome = tool 'sonnar_scanner';
@@ -41,7 +47,7 @@ pipeline {
                      -Dsonar.projectKey=calculator \
                      -Dsonar.sources=. \
                      -Dsonar.host.url=http://ec2-35-180-86-71.eu-west-3.compute.amazonaws.com:9000 \
-                     -Dsonar.login=a3e9d82e058a22f358338a3faa14eb263963756c"
+                     -Dsonar.login=$TOKEN_SONAR"
           }
        }
     }
