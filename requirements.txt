@@ -24,7 +24,7 @@ requests-toolbelt==0.9.1
 SecretStorage==3.1.2
 six==1.15.0
 tqdm==4.46.1
-urllib3==1.25.9
+urllib3==1.26.5
 webencodings==0.5.1
 Werkzeug==1.0.1
 zipp==3.1.0
